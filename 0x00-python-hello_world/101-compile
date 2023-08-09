@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# This Bash script uses the "compileall" module to compile a Python file into bytecode.
+# It compiles the specified Python file with optimizations and saves the bytecode files.
+
+PYFILE="your_python_script.py"  # Replace with the actual filename
+
+# Use the "compileall" module to compile the Python file into bytecode
+python3 -m compileall -b "$PYFILE"
