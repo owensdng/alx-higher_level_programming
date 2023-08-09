@@ -1,31 +1,26 @@
-#include "lists.h"
+#include "list.h"
 
 /**
- * check_cycle - Detects a cycle in a linked list.
- * @head: Pointer to the head of the linked list.
+ * check_cycle - Check if the linked list contains a cycle
+ * @list: Linked list for verification
  *
- * Return: 1 if a cycle exists, 0 if not.
+ * Returns: 1 if the list has a loop, 0 if not
  */
-int check_cycle(listint_t *head)
+int check_cycle(listint_t *list)
 {
-    listint_t *slow_ptr = head;
-    listint_t *fast_ptr = head;
+        listint_t *slow = list;
+        listint_t *fast = list;
 
-    // Check if the linked list is empty
-    if (!head)
-        return 0;
+        if (!list)
+                return(0);
 
-    // Use Floyd's cycle-finding algorithm
-    while (slow_ptr && fast_ptr && fast_ptr->next)
-    {
-        slow_ptr = slow_ptr->next;
-        fast_ptr = fast_ptr->next->next;
+        while (slow && fast && fast -> next)
+        {
+                slow = slow->next;
+                fast = fast->next->next;
+                if (slow == fast)
+                        return(1);
+        }
 
-        // If the pointers meet, a cycle is found
-        if (slow_ptr == fast_ptr)
-            return 1;
-    }
-
-    // No cycle was found
-    return 0;
-}
+        return(0);
+0x01-python-if_else_loops_functions}
