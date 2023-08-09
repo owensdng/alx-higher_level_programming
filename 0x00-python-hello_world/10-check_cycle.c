@@ -1,26 +1,31 @@
 #include "lists.h"
 
 /**
- * check_cycle - checks if a linked list contains a cycle
- * @list: linked list to check
+ * check_cycle - Detects a cycle in a linked list.
+ * @head: Pointer to the head of the linked list.
  *
- * Return: 1 if the list has a cycle, 0 if it doesn't
+ * Return: 1 if a cycle exists, 0 if not.
  */
-int check_cycle(listint_t *list)
+int check_cycle(listint_t *head)
 {
-	listint_t *slow = list;
-	listint_t *fast = list;
+    listint_t *slow_ptr = head;
+    listint_t *fast_ptr = head;
 
-	if (!list)
-		return (0);
+    // Check if the linked list is empty
+    if (!head)
+        return 0;
 
-	while (slow && fast && fast->next)
-	{
-		slow = slow->next;
-		fast = fast->next->next;
-		if (slow == fast)
-			return (1);
-	}
+    // Use Floyd's cycle-finding algorithm
+    while (slow_ptr && fast_ptr && fast_ptr->next)
+    {
+        slow_ptr = slow_ptr->next;
+        fast_ptr = fast_ptr->next->next;
 
-	return (0);
+        // If the pointers meet, a cycle is found
+        if (slow_ptr == fast_ptr)
+            return 1;
+    }
+
+    // No cycle was found
+    return 0;
 }
