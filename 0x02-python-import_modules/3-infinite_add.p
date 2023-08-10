@@ -3,9 +3,9 @@
 if __name__ == "__main__":
     import sys
     
-    result = 0
+    total_sum = 0
     
-    for i in sys.argv[1:]:  # Start from index 1 to skip the script name
-        result += int(i)
+    for arg in sys.argv[1:]:
+        total_sum += int(arg)
     
-    print("{}".format(result))
+    print(total_sum)
