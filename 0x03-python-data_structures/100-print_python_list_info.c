@@ -6,33 +6,28 @@
  */
 void print_python_list_info(PyObject *p)
 {
-    int size, i;
-    PyObject *obj;
+  PyListObject *list = (PyListObject *)p;
 
-    if (!PyList_Check(p))
-    {
-        fprintf(stderr, "Invalid argument: Not a list\n");
-        return;
+  // Get the size of the list
+  int size = PyList_Size(list);
+
+  // Get the number of elements that are actually allocated
+  int allocated = list->allocated;
+
+  // Print the size and allocated information
+  printf("[*] Size of the Python List = %d\n", size);
+  printf("[*] Allocated = %d\n", allocated);
+
+  // Print the elements of the list
+  for (int i = 0; i < size; i++) {
+    PyObject *item = PyList_GetItem(list, i);
+    char *type = (char *)Py_TYPE(item)->tp_name;
+
+    // Check if the element is a string
+    if (strcmp(type, "str") == 0) {
+      printf("Element %d: \"%s\"\n", i, PyString_AsString(item));
+    } else {
+      printf("Element %d: %s\n", i, type);
     }
-
-    size = PyList_Size(p);
-
-    printf("[*] Size of the Python List = %d\n", size);
-
-    if (PyList_CheckExact(p))
-    {
-        printf("[*] Allocated = %d\n", size);
-    }
-    else
-    {
-        printf("[*] Allocated = %d\n", ((PyListObject *)p)->allocated);
-    }
-
-    for (i = 0; i < size; i++)
-    {
-        printf("Element %d: ", i);
-
-        obj = PyList_GetItem(p, i);
-        printf("%s\n", Py_TYPE(obj)->tp_name);
-    }
+  }
 }
