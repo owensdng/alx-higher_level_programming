@@ -1,29 +1,53 @@
 #!/usr/bin/python3
-"""Defines a class Rectangle that inherits from BaseGeometry."""
+"""
+Module: 9-rectangle
+
+Description: A module that defines the Rectangle class.
+"""
+
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-
 class Rectangle(BaseGeometry):
-    """Represent a rectangle using BaseGeometry."""
+    """
+    A class representing a Rectangle.
+    """
 
     def __init__(self, width, height):
-        """Intialize a new Rectangle.
+        """
+        Initializes a Rectangle instance with a given width and height.
 
         Args:
-            width (int): The width of the new Rectangle.
-            height (int): The height of the new Rectangle.
+            width (int): The width of the Rectangle.
+            height (int): The height of the Rectangle.
         """
-        super().integer_validator("width", width)
+        # Validate width and height using the inherited integer_validator method
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+
+        # Set the width and height as private attributes
         self.__width = width
-        super().integer_validator("height", height)
         self.__height = height
 
     def area(self):
-        """Return the area of the rectangle."""
+        """
+        Calculates and returns the area of the Rectangle.
+
+        Returns:
+            int: The area of the Rectangle.
+        """
         return self.__width * self.__height
 
     def __str__(self):
-        """Return the print() and str() representation of a Rectangle."""
-        string = "[" + str(self.__class__.__name__) + "] "
-        string += str(self.__width) + "/" + str(self.__height)
-        return string
+        """
+        Returns a string representation of the Rectangle.
+
+        Returns:
+            str: A string in the format [Rectangle] <width>/<height>
+        """
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
+
+if __name__ == "__main__":
+    r = Rectangle(3, 5)
+
+    print(r)
+    print(r.area())
