@@ -1,2 +1,3 @@
--- Task 10: List by best
-SELECT * FROM hbtn_0c_0.second_table ORDER BY score DESC;
+-- List all records in second_table ordered by score (descending)
+USE hbtn_0c_0;
+SELECT * FROM second_table ORDER BY score DESC;

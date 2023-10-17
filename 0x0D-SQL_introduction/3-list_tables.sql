@@ -1,2 +1,3 @@
--- Task 3: List tables
-SHOW TABLES FROM hbtn_0c_0;
+-- List all tables in the specified database (passed as argument)
+USE $1;
+SHOW TABLES;

@@ -1,2 +1,2 @@
--- Task 0: List databases
-SELECT DATABASE();
+-- List all databases
+SHOW DATABASES;
