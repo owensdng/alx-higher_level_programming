@@ -1,3 +1,2 @@
--- List all tables in the specified database (passed as argument)
-USE $1;
+-- List all tables in the specified database on my MYSQL server.
 SHOW TABLES;

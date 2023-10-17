@@ -1,3 +1,4 @@
--- Update the score of Bob to 10 in second_table without using id
-USE hbtn_0c_0;
-UPDATE second_table SET score = 10 WHERE name = 'Bob';
+-- Updates the score of Bob to 10 in the table second_table in my MySQL server.
+UPDATE `second_table`
+SET `score` = 10
+WHERE `name` = "Bob";
